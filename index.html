@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API: Code Quiz</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header>
+        <style>
+            header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        </style>
+        <h3><a href="index2.html">View Highscores</a></h2>
+        <h3 id="timer">Time: 0</h3>
+    </header>
+    <main>
+        <style>
+            main div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        </style>
+        <div class="quiz-box">
+            <h1>Coding Quiz</h1>
+            <h2>Try to answer all of the questions in 75 seconds or less!</h2>
+            <button id="start-quiz">Start Quiz</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
