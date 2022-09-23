@@ -8,43 +8,43 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 
+const questionEl = document.createElement("question-text").textContent;
+
+
 const Questions = [
     {
-        name: 'The condition in an if/else statement is enclosed within: ', 
-        choiceA: "quotes",
-        choiceB: "curly brackets",
-        choiceC: "parenthesis",
-        choiceD: "square brackets",
-        correct: "B"
+        question: 'The condition in an if/else statement is enclosed within: ',
+        choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+        correct: "curly brackets"
       }, {
-        name: 'Arrays in JavaScript can be used to store: ', 
-        choiceA: "numbers and strings",
-        choiceB: "other arrays",
-        choiceC: "booleans",
-        choiceD: "all of the above",
-        correct: "D"
+        question: 'Arrays in JavaScript can be used to store: ', 
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        correct: "all of the above"
       }, {
-        name: 'String values must be closed within this when being assigned to variables: ', 
-        choiceA: "commas",
-        choiceB: "curly brackets",
-        choiceC: "quotes",
-        choiceD: "parenthesis",
-        correct: "C"
-      }
-    ];
+        question: 'String values must be closed within this when being assigned to variables: ', 
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        correct: "quotes"
+      }];
 
-let lastQuestionIndex = Questions.length - 1;
+let lastQuestionIndex = Questions.length;
 let currentQuestionIndex = 0;
 
 
 function renderQuestion(){
     let pQuestion = Questions[currentQuestionIndex];
-    name.innerHTML = "<h2>" + pQuestion.name + "</h2>";
-    choiceA.innerhtml = pQuestion.choiceA;
-    choiceB.innerhtml = pQuestion.choiceB;
-    choiceC.innerhtml = pQuestion.choiceC;
-    choiceD.innerhtml = pQuestion.choiceD;
+    Questions[currentQuestionIndex].innerHTML = "<h2>" + pQuestion.question + "</h2>";
+    choiceA.innerhtml = pQuestion.choices[0];
+    choiceB.innerhtml = pQuestion.choices[1];
+    choiceC.innerhtml = pQuestion.choices[2];
+    choiceD.innerhtml = pQuestion.choices[3];
+    console.log(pQuestion.question);
+    questionEl.textContent = pQuestion.question
 }
+
+
+
+
+
 
 // Use a for loop regarding currentQuestionIndex so it counts up.
 // Loop through and display all options in one button div. Create element of button for all for loops
@@ -54,9 +54,11 @@ function renderQuestion(){
 
 
 
+//high scores are local storage
 
-currentQuestionIndex++
-renderQuestion();
+//button 
+
+
 
 let secondsLeft = 75;
 let count = 0;
@@ -64,10 +66,11 @@ let count = 0;
 function setTime() {
   let timerInterval = setInterval(function() {
     if (secondsLeft <= 75) {
+      quizTimer.textContent = "Time: " + secondsLeft;
       secondsLeft--;
-      quizTimer.textContent = secondsLeft;
-    if(secondsLeft === 0)
+    if(secondsLeft <= 0)
       clearInterval(timerInterval);
+      return
     }
   }, 1000);
 }
@@ -76,7 +79,18 @@ function setTime() {
   
 
 startBtn.addEventListener('click', function() {
-  document.getElementById("start-quiz").innerhtml = "Hello World";
+  document.getElementById("start-quiz").innerhtml
   quizTimer.textContent = secondsLeft;
+  renderQuestion();
   return setTime();
 });
+
+function checkAnswer(index) {
+  console.log(index);
+  if (Questions[currentQuestionIndex].choices[index] === Questions[currentQuestionIndex].correct) {
+    currentQuestionIndex++
+    renderQuestion();
+  } else {
+    return
+  }
+}
