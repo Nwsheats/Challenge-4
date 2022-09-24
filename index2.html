@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Web API: Code Quiz Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1></h1>
+    <div class="container d-flex col-6">
+    <form class="jumbotron justify-content center w-100" id="score-form">
+        <h1 class="display-4 text-center">It's over now...
+        <hr class="my-4">
+        <h3 class="text-center my-4" id="score-counter">Your final score is:
+        <h5 class="text-center">Please enter your name and click Enter to log your score:
+        <input class="w-50 center my-4" id= "input-field" name="input-field" placeholder="Enter your name here">
+        <hr class="my-4">
+        <button class="btn btn-primary btn-lg" id="score-btn" href="#" role="button">Enter</button>
+        <a class="btn btn-primary btn-lg" id="start-over-btn" href="index.html" role="button">Try Again</a>
+    </div>
+    </div>
+    <div class="d-flex row justify-content-center">
+        <h3 class="my-4 font-weight-bold w-50 text-center">High Scores:
+            <ul class=" container list-group-item list-unstyled my-4" id="score-field"></ul>
+        </h3>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

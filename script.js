@@ -27,10 +27,11 @@ const Questions = [
 
 
 let currentQuestionIndex = 0;
-
 let startBtn = document.getElementById("start-quiz");
 const quizTimer = document.getElementById("timer");
 const quizBox = document.querySelector("quiz-box");
+let score = 0;
+let maxScore = score[Questions.length]
 
 
 
@@ -69,6 +70,7 @@ function setTime() {
   let timerInterval = setInterval(function() {
     if (secondsLeft <=0) { 
       clearInterval(timerInterval)
+      localStorage.setItem("Final Score", score);
       location.assign("./index2.html")
     } else if (secondsLeft <= 20) {
       quizTimer.textContent = "Time: " + secondsLeft;
@@ -94,6 +96,7 @@ function checkAnswer(index) {
       if (currentQuestionIndex < Questions.length) {
       renderQuestion();
       } else {
+        localStorage.setItem("Final Score", score);
         location.assign("./index2.html")
       }
   } else {
@@ -105,11 +108,7 @@ function checkAnswer(index) {
 
 }
 
-
-let maxScore = score[Questions.length]
-
 function calcScore() {
-  let score = 0;
   score += 3
     scoreKeeper.textContent = "Your score is: " + score;
   }
