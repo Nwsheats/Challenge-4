@@ -43,9 +43,6 @@ function renderQuestion(){
     choiceB.textContent = CurrentChoiceB;
     choiceC.textContent = CurrentChoiceC;
     choiceD.textContent = CurrentChoiceD;
-
-    console.log(pQuestion.question);
-    
 }
 
 
@@ -61,30 +58,30 @@ function renderQuestion(){
 
 //button 
 
-localStorage.setItem("score", "0")
+// localStorage.setItem("score", "0")
 
-JSON.stringify()
-JSON.parse()
+// JSON.stringify()
+// JSON.parse()
 
 //make a div that is hidden that appears when it is over.
 
-let secondsLeft = 75;
-let count = 0;
+let secondsLeft = 20;
 
 function setTime() {
   let timerInterval = setInterval(function() {
-    if (secondsLeft <= 75) {
+    if (secondsLeft <= 20) {
       quizTimer.textContent = "Time: " + secondsLeft;
       secondsLeft--;
-    if(secondsLeft < 0)
+    if(secondsLeft < 1)
       clearInterval(timerInterval);
-      return
     }
   }, 1000);
 }
 
-// function to end the game at '0'
-  
+function subtractTime() {
+    secondsLeft -= 5;
+  }
+
 
 startBtn.addEventListener('click', function() {
   document.getElementById("start-quiz").replaceWith("");
@@ -103,6 +100,7 @@ function checkAnswer(index) {
         location.assign("./index2.html")
       }
   } else {
+    subtractTime(); 
     return
   }
 
@@ -113,3 +111,7 @@ function checkAnswer(index) {
 // High Score:
 
 // DOM Manipulation with Local Storage
+
+
+// write Score to local Storage
+// call local St
