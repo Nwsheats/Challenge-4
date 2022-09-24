@@ -6,6 +6,8 @@ let choiceB = document.getElementById("B");
 let choiceC = document.getElementById("C");
 let choiceD = document.getElementById("D");
 let confirmAnswer = document.getElementById("confirm");
+let btnClass = document.querySelector("choice");
+let scoreKeeper = document.getElementById("score-keeper");
 
 const Questions = [
   {
@@ -26,7 +28,7 @@ const Questions = [
 
 let currentQuestionIndex = 0;
 
-var startBtn = document.getElementById("start-quiz");
+let startBtn = document.getElementById("start-quiz");
 const quizTimer = document.getElementById("timer");
 const quizBox = document.querySelector("quiz-box");
 
@@ -53,8 +55,6 @@ function renderQuestion(){
 
 
 //high scores are local storage
-
-//button 
 
 // localStorage.setItem("score", "0")
 
@@ -87,9 +87,9 @@ startBtn.addEventListener('click', function() {
 });
 
 function checkAnswer(index) {
-  console.log(index);
   if (Questions[currentQuestionIndex].choices[index] === Questions[currentQuestionIndex].correct) {
       confirmAnswer.textContent = "Correct!"
+      calcScore()
       currentQuestionIndex++
       if (currentQuestionIndex < Questions.length) {
       renderQuestion();
@@ -97,14 +97,22 @@ function checkAnswer(index) {
         location.assign("./index2.html")
       }
   } else {
+
     confirmAnswer.textContent = "Wrong!"
     secondsLeft -= 5
     return
   }
 
-  
 }
 
+
+let maxScore = score[Questions.length]
+
+function calcScore() {
+  let score = 0;
+  score += 3
+    scoreKeeper.textContent = "Your score is: " + score;
+  }
 
 // High Score:
 

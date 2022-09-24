@@ -13,10 +13,11 @@
             header {
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: space-evenly;
             }
         </style>
         <h3><a href="index2.html">View Highscores</a></h2>
+        <h3 id="score-keeper">Your score is: 0</h3>
         <h3 id="timer">Time: 20</h3>
     </header>
     <main>
@@ -33,10 +34,10 @@
             <button id="start-quiz">Start Quiz</button>
         </div>
         <div id="choices">
-            <button class="choice" id="A" onclick="checkAnswer(0)">A</button>
-            <button class="choice" id="B" onclick="checkAnswer(1)">B</button>
-            <button class="choice" id="C" onclick="checkAnswer(2)">C</button>
-            <button class="choice" id="D" onclick="checkAnswer(3)">D</button>
+            <button class="btn" id="A" onclick="checkAnswer(0)">A</button>
+            <button class="btn" id="B" onclick="checkAnswer(1)">B</button>
+            <button class="btn" id="C" onclick="checkAnswer(2)">C</button>
+            <button class="btn" id="D" onclick="checkAnswer(3)">D</button>
         </div>
         <div id="confirm">
         </div>
