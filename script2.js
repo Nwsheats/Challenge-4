@@ -15,13 +15,13 @@ function handleLogScore(event) {
   event.preventDefault();
   let playerName = $('input[name="input-field"]').val();
   if (!playerName) {
-    alert('No initials entered!');
+    alert('No name entered!');
     return;
   }
   scoreList.append('<li>' + playerName + ": " + score + '</li>');
   $('input[name="input-field"]').val('');
 }
 
-scoreFormEl.on('submit', handleLogScore);
+scoreFormEl.on('submit', handleLogScore)
 
 
