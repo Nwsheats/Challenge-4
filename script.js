@@ -69,14 +69,17 @@ let secondsLeft = 20;
 
 function setTime() {
   let timerInterval = setInterval(function() {
-    if (secondsLeft <= 20) {
+    if (secondsLeft <=0) { 
+      clearInterval(timerInterval)
+      location.assign("./index2.html")
+    } else if (secondsLeft <= 20) {
       quizTimer.textContent = "Time: " + secondsLeft;
       secondsLeft--;
-    if(secondsLeft < 1)
-      clearInterval(timerInterval);
+      // timeEnd()
     }
   }, 1000);
 }
+
 
 function subtractTime() {
     secondsLeft -= 5;
