@@ -5,6 +5,7 @@ let choiceA = document.getElementById("A");
 let choiceB = document.getElementById("B");
 let choiceC = document.getElementById("C");
 let choiceD = document.getElementById("D");
+let confirmAnswer = document.getElementById("confirm");
 
 const Questions = [
   {
@@ -46,9 +47,6 @@ function renderQuestion(){
 }
 
 
-// Use a for loop regarding currentQuestionIndex so it counts up.
-// Loop through and display all options in one button div. Create element of button for all for loops
-// create div and appendChild for each to make it so that JavaScript creates the button
 
 // HTML = things I need to hide/ hiding elements
 
@@ -75,15 +73,10 @@ function setTime() {
     } else if (secondsLeft <= 20) {
       quizTimer.textContent = "Time: " + secondsLeft;
       secondsLeft--;
-      // timeEnd()
     }
   }, 1000);
 }
 
-
-function subtractTime() {
-    secondsLeft -= 5;
-  }
 
 
 startBtn.addEventListener('click', function() {
@@ -96,6 +89,7 @@ startBtn.addEventListener('click', function() {
 function checkAnswer(index) {
   console.log(index);
   if (Questions[currentQuestionIndex].choices[index] === Questions[currentQuestionIndex].correct) {
+      confirmAnswer.textContent = "Correct!"
       currentQuestionIndex++
       if (currentQuestionIndex < Questions.length) {
       renderQuestion();
@@ -103,7 +97,8 @@ function checkAnswer(index) {
         location.assign("./index2.html")
       }
   } else {
-    subtractTime(); 
+    confirmAnswer.textContent = "Wrong!"
+    secondsLeft -= 5
     return
   }
 
