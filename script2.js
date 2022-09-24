@@ -7,8 +7,7 @@ let scoreList = $('#score-field');
 
 scoreCounter.textContent = "Your final score is: " + score;
 
-
-var scoreFormEl = $('#score-form');
+let scoreFormEl = $('#score-form');
 
 // create function to handle form submission
 function handleLogScore(event) {
@@ -20,7 +19,11 @@ function handleLogScore(event) {
   }
   scoreList.append('<li>' + playerName + ": " + score + '</li>');
   $('input[name="input-field"]').val('');
+  localStorage.setItem("Name", playerName)
+  localStorage.setItem("Final Score", score)
 }
+
+//make an object for localStorage with playerName and score
 
 scoreFormEl.on('submit', handleLogScore)
 
