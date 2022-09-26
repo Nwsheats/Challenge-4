@@ -1,5 +1,3 @@
-console.log()
-
 // These are my initial variables to grab the ElementsById from the HTML fields.
 
 let questionEl = document.getElementById("question-text");
