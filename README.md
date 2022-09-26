@@ -17,7 +17,7 @@ SO THAT I can gauge my progress compared to my peers
 
 ## Mock-Up
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![A user clicks through an interactive coding quiz, then enters their name to save the high score before resetting and starting over.](/04-web-apis-homework-demo.gif)
 
 ## Deployed URL:
 
