@@ -21,7 +21,7 @@ SO THAT I can gauge my progress compared to my peers
 
 ## Deployed URL:
 
-
+https://nwsheats.github.io/JavaScript-Coding-Quiz/
 
 ## URL of Git Repository:
 
