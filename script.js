@@ -1,5 +1,7 @@
 console.log()
 
+// These are my initial variables to grab the ElementsById from the HTML fields.
+
 let questionEl = document.getElementById("question-text");
 let choiceA = document.getElementById("A");
 let choiceB = document.getElementById("B");
@@ -8,6 +10,8 @@ let choiceD = document.getElementById("D");
 let confirmAnswer = document.getElementById("confirm");
 let btnClass = document.querySelector("choice");
 let scoreKeeper = document.getElementById("score-keeper");
+
+// This is my array of objects that hold the questions, the choices, and the correct answer for each of the 6 questions.
 
 const Questions = [
   {
@@ -38,15 +42,19 @@ const Questions = [
     ];
 
 
+// currentQuestionIndex determines which question the user is on.
+// startBtn is for the button to start the quiz.
+// quizTimer is for the timer.
+// score is set to 0.
 
 let currentQuestionIndex = 0;
 let startBtn = document.getElementById("start-quiz");
 const quizTimer = document.getElementById("timer");
-const quizBox = document.querySelector("quiz-box");
 let score = 0;
-let maxScore = score[Questions.length]
 
-
+// renderQuestion is my function designed to show the questions. The currentQuestionIndex is applied to Questions and assigned the variable pQuestion.
+// QuestionText is the current index question and that replaces the "question-text" section of the HTML.
+// CurrentChoice A-D do the same thing with the available choices, making them appear on the page.
 
 function renderQuestion(){
     const pQuestion = Questions[currentQuestionIndex];
@@ -62,12 +70,20 @@ function renderQuestion(){
     choiceD.textContent = CurrentChoiceD;
 }
 
+// The buttons are hidden. This function changes the display to flex instead of none and makes them visible.
 
 function showButtons() {
   document.getElementById("choices").style.display = "flex";
 }
 
+// secondsLeft is defined as 45 here.
+
 let secondsLeft = 45;
+
+// setTime is a function designed to tick down the clock. If secondsLeft is 0 or below, the score is logged in local storage,
+// and the page navigates to index2.html
+// Otherwise, it ticks down from 45 seconds, while the quizTimer shows Time: secondsLeft.
+// secondsLeft will continue to deprecate at the rate of 1 second.
 
 function setTime() {
   let timerInterval = setInterval(function() {
@@ -82,13 +98,26 @@ function setTime() {
   }, 1000);
 }
 
+// This is the Event Listener for the Start Quiz button, to make the button disappear after it is pressed
+// The showButtons function above is run.
+// The quizTimer.textContent section is repeated because it was originally disappearing when the button was pressed.
+// renderQuestion function is run, so that the quiz can start and the first question can appear.
+// setTime function is returned to start the clock.
+
 startBtn.addEventListener('click', function() {
   document.getElementById("start-quiz").replaceWith("");
   showButtons();
-  quizTimer.textContent = secondsLeft;
+  quizTimer.textContent = "Time: " + secondsLeft;
   renderQuestion();
   return setTime();
 });
+
+// checkAnswer is a function that checks the choice made by the user against the correct answer. If it is wrong, the text "wrong!" flashes
+// and 10 seconds are removed from the timer.
+
+// If it is correct, the text "Correct!" shows, the CalcScore function is run to display an accurate score, the CurrentQuestionIndex increases by 1, allowing for the next question
+// and the renderQuestion function is run, as long as the currentQuestionIndex is less than the total number of questions.
+// When the currentQuestionIndex reaches the total number of questions, the final score is set in Local Storage and the location is changed to .index2.html
 
 function checkAnswer(index) {
   if (Questions[currentQuestionIndex].choices[index] === Questions[currentQuestionIndex].correct) {
@@ -102,15 +131,15 @@ function checkAnswer(index) {
         location.assign("./index2.html")
       }
   } else {
-
     confirmAnswer.textContent = "Wrong!"
-    secondsLeft -= 5
+    secondsLeft -= 10
     return
   }
-
 }
 
+// calcScore adds 5000 points per correct question and manages the score keeper that shows the current score.
+
 function calcScore() {
-  score += 3
+  score += 5000
     scoreKeeper.textContent = "Your score is: " + score;
   }
