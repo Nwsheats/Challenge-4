@@ -22,7 +22,20 @@ const Questions = [
       question: 'String values must be closed within this when being assigned to variables: ', 
       choices: ["commas", "curly brackets", "quotes", "parenthesis"],
       correct: "quotes"
-    }];
+    }, {
+      question: 'Inside which HTML element do we put the JavaScript?', 
+      choices: ["<script>", "<JavaScript>", "<scripting>", "<js>"],
+      correct: "<script>"
+    }, {
+      question: 'Which of the following is NOT an example of a statement', 
+      choices: ["for", "to", "while", "break"],
+      correct: "to"
+    }, {
+      question: 'What is the correct way to use camel case when declaring variables?', 
+      choices: ["CamelCase", "camelcase", "camelCase", "all of the above"],
+      correct: "camelCase"
+    },
+    ];
 
 
 
@@ -50,21 +63,11 @@ function renderQuestion(){
 }
 
 
+function showButtons() {
+  document.getElementById("choices").style.display = "flex";
+}
 
-// HTML = things I need to hide/ hiding elements
-
-
-
-//high scores are local storage
-
-// localStorage.setItem("score", "0")
-
-// JSON.stringify()
-// JSON.parse()
-
-//make a div that is hidden that appears when it is over.
-
-let secondsLeft = 20;
+let secondsLeft = 45;
 
 function setTime() {
   let timerInterval = setInterval(function() {
@@ -72,17 +75,16 @@ function setTime() {
       clearInterval(timerInterval)
       localStorage.setItem("Final Score", score);
       location.assign("./index2.html")
-    } else if (secondsLeft <= 20) {
+    } else if (secondsLeft <= 45) {
       quizTimer.textContent = "Time: " + secondsLeft;
       secondsLeft--;
     }
   }, 1000);
 }
 
-
-
 startBtn.addEventListener('click', function() {
   document.getElementById("start-quiz").replaceWith("");
+  showButtons();
   quizTimer.textContent = secondsLeft;
   renderQuestion();
   return setTime();
@@ -112,11 +114,3 @@ function calcScore() {
   score += 3
     scoreKeeper.textContent = "Your score is: " + score;
   }
-
-// High Score:
-
-// DOM Manipulation with Local Storage
-
-
-// write Score to local Storage
-// call local St

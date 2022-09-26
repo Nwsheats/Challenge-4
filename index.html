@@ -5,41 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web API: Code Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="./bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <style>
-            header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-evenly;
-            }
-        </style>
-        <h3><a href="index2.html">View Highscores</a></h2>
-        <h3 id="score-keeper">Your score is: 0</h3>
-        <h3 id="timer">Time: 20</h3>
+    <header class="d-flex row justify-content-center">
+        <nav class="d-flex w-95 column navbar navbar-light bg-light justify-content-space-around">
+                <a class="navbar-brand mx-3" href="index2.html">View Highscores</a>
+                <a class="navbar-brand" id="score-keeper">Your Score is: 0</a>
+                <a class="navbar-brand mx-3" id="timer">Time: 45</a>
+        </nav>
     </header>
-    <main>
-        <style>
-            main div {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-        </style>
-        <div class="quiz-box">
-            <h1>Coding Quiz</h1>
-            <h2 id="question-text">Try to answer all of the questions in 75 seconds or less!</h2>
-            <button id="start-quiz">Start Quiz</button>
+    <main class="column justify-content-center">
+        <div class="quiz-box text-center">
+            <h1 class="text-center border-5 my-5">JavaScript Coding Quiz</h1>
+            <h2 class="text-center my-5" id="question-text">Try to answer all of the questions in 45 seconds or less!</h2>
+            <button class="btn btn-primary my-1 text-center" id="start-quiz">Start Quiz</button>
         </div>
-        <div id="choices">
-            <button class="btn" id="A" onclick="checkAnswer(0)">A</button>
-            <button class="btn" id="B" onclick="checkAnswer(1)">B</button>
-            <button class="btn" id="C" onclick="checkAnswer(2)">C</button>
-            <button class="btn" id="D" onclick="checkAnswer(3)">D</button>
+        <div class="d-flex column justify-content-center">
+        <div class="row text-center" id="choices" style="display:none">
+            <button class="btn btn-primary my-1 text-center" id="A" onclick="checkAnswer(0)">A</button>
+            <button class="btn btn-primary my-1 text-center" id="B" onclick="checkAnswer(1)">B</button>
+            <button class="btn btn-primary my-1 text-center" id="C" onclick="checkAnswer(2)">C</button>
+            <button class="btn btn-primary my-1 text-center" id="D" onclick="checkAnswer(3)">D</button>
         </div>
-        <div id="confirm">
+        </div>
+        <div class="my-4 text-center display-6" id="confirm">
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

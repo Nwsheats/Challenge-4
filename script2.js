@@ -42,10 +42,6 @@ function handleLogScore(event) {
   scoreList.append('<li>' + playerName + ": " + score + '</li>');
   $('input[name="input-field"]').val('');
   tempPName.push(playerName)
-//   let storedPName = [];
-//   let storedFScore = [];
-//   tempPName.concat(storedPName);
-//   tempFScore.concat(storedFScore);
   localStorage.setItem("Stored-Name", JSON.stringify(tempPName));
   localStorage.setItem("Stored-Final-Score", JSON.stringify(tempFScore))
   scoreCounter.textContent = "";
@@ -54,10 +50,6 @@ function handleLogScore(event) {
 function clearHighScore() {
     localStorage.clear();
 }
-
-
-
-//make an object for localStorage with playerName and score
 
 scoreFormEl.on('submit', handleLogScore) 
 clearFormEl.on('click', clearHighScore)
